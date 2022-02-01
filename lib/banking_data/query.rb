@@ -30,9 +30,9 @@ module BankingData
       return [] if bank.nil?
 
       data = bank.all
-        .select { |bank| @options.map { |k, v| bank.send(k) == v }.all? }
+        .select { |bank| @options.map { |k, v| bank.public_send(k) == v }.all? }
       if @attributes
-        data.map { |bank| @attributes.map { |attr| bank.send(attr) } }
+        data.map { |bank| @attributes.map { |attr| bank.public_send(attr) } }
       else
         data
       end
