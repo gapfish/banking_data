@@ -8,7 +8,7 @@ Banking data (including SWIFT-codes/BIC) for Germany, Austria, Switzerland, Neth
 
 ## CHANGELOG
 
-### 0.9.5b (bugfix)
+### 0.9.6
 
 * rename dutch bank identifier
 
