@@ -7,7 +7,7 @@ class BankingData::DutchBank < BankingData::Bank
 
   LOCALE = :nl
 
-  attr_accessor :bank_id, :bic, :name
+  attr_accessor :blz, :bic, :name
 
   class << self
 
@@ -23,11 +23,11 @@ class BankingData::DutchBank < BankingData::Bank
     def get_all
       banks = []
       SmarterCSV.process(file, opts).each do |line|
-        bank_id = line[:identifier].to_s
+        blz = line[:identifier].to_s
         bic = line[:bic]
         name = line[:naam_betaaldienstverlener].to_s
-        if bank_id && bic && name
-          banks << new(name: name, bank_id: bank_id, bic: bic)
+        if blz && bic && name
+          banks << new(name: name, blz: blz, bic: bic)
         end
       end
       banks.uniq
